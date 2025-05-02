@@ -1,5 +1,5 @@
 import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
+import About from '../components/AboutSection';
 import HeroSlider from '../components/HeroSlider';
 
 const Home = () => {
@@ -7,6 +7,7 @@ const Home = () => {
     <>
       <Navbar />
       <HeroSlider />
+      <About />
       {/* Add more sections here */}
     </>
   );
