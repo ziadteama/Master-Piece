@@ -57,11 +57,11 @@ const Navbar = () => {
 
       <div
         className={`relative flex items-center justify-between w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 transition-all duration-500 ${
-          scrolled ? "top-0 py-4" : "top-8 py-6 sm:py-8 lg:py-2"
+          scrolled ? "top-0 py-2" : "top-4 py-6 sm:py-8 lg:py-2"
         }`}
       >
         {/* Logo with padding */}
-        <div className="w-[72px] sm:w-[84px] pt-2 pb-2 sm:pt-3 sm:pb-3 lg:pt-5 lg:pb-5 transition-all duration-300">
+        <div className="w-[72px] sm:w-[84px] pt-2 pb-2 sm:pt-3 sm:pb-3 lg:pt-1 lg:pb-1 transition-all duration-300">
           <img
             src={Logo}
             alt="Masterpiece Logo"

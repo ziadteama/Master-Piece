@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import img from "../assets/images/aboutsection.png";
 import pattern from "../assets/images/about-pattern.png";
+import AnimatedButton from "./AnimatedButton";
 
 export default function AboutSection() {
   return (
@@ -63,12 +64,8 @@ export default function AboutSection() {
           </p>
 
           {/* Button */}
-          <div className="relative inline-block group overflow-hidden">
-            <span className="uppercase px-6 py-3 border border-white text-white font-medium tracking-wide relative z-10 block bg-transparent transition-colors duration-300 ease-in-out group-hover:text-black">
-              About Us
-            </span>
-            <span className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-right group-hover:origin-left z-0"></span>
-          </div>
+          <AnimatedButton href="#about">About Us</AnimatedButton>
+
         </motion.div>
       </div>
     </section>
