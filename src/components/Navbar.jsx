@@ -39,18 +39,33 @@ const Navbar = () => {
   }, [mobileOpen]);
 
   return (
-    <header
-      className={`fixed w-full z-50 transition-all duration-500 bg-transparent text-white ${
-        scrolled ? "top-0 pt-4" : "top-10 pt-6"
-      }`}
-    >
-      <div className="w-full max-w-[1320px] mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-10">
-        {/* Logo */}
-        <div className="w-20 transition-all duration-300">
+    <header className="fixed w-full z-50 transition-all duration-500">
+      {/* Animated white background behind navbar */}
+      <div
+        className={`absolute inset-0 z-[-1] bg-white origin-top transform transition-transform duration-500 ease-out ${
+          scrolled ? "scale-y-100" : "scale-y-0"
+        }`}
+      ></div>
+
+      {/* Backdrop overlay */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-30 transition-opacity duration-300"
+          onClick={() => setMobileOpen(false)}
+        ></div>
+      )}
+
+      <div
+        className={`relative flex items-center justify-between w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 transition-all duration-500 ${
+          scrolled ? "top-0 py-4" : "top-8 py-6 sm:py-8 lg:py-2"
+        }`}
+      >
+        {/* Logo with padding */}
+        <div className="w-[72px] sm:w-[84px] pt-2 pb-2 sm:pt-3 sm:pb-3 lg:pt-5 lg:pb-5 transition-all duration-300">
           <img
             src={Logo}
             alt="Masterpiece Logo"
-            className={`w-full h-auto transition-colors duration-500 ${
+            className={`w-full h-auto transition-all duration-500 ${
               scrolled ? "invert-0" : "invert"
             }`}
           />
@@ -72,6 +87,8 @@ const Navbar = () => {
                     className={`w-[2px] transition-all duration-300 ${
                       isActive
                         ? "bg-primary h-full"
+                        : scrolled
+                        ? "bg-black h-0 group-hover:h-full"
                         : "bg-white h-0 group-hover:h-full"
                     }`}
                   ></span>
@@ -80,7 +97,11 @@ const Navbar = () => {
                 <span
                   className={`transition-all duration-300 leading-[1.8] ${
                     isActive
-                      ? "text-white font-semibold"
+                      ? scrolled
+                        ? "text-black font-semibold"
+                        : "text-white font-semibold"
+                      : scrolled
+                      ? "text-black/70 font-medium group-hover:text-black"
                       : "text-white/70 font-medium group-hover:text-white"
                   }`}
                 >
@@ -91,24 +112,28 @@ const Navbar = () => {
           })}
         </nav>
 
-        {/* Hamburger */}
-        <button
-          className="md:hidden text-white z-50 relative p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          <svg
-            className="w-8 h-8"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
+        {/* Hamburger (only hidden when drawer is open) */}
+        {!mobileOpen && (
+          <button
+            className={`md:hidden z-50 relative p-2 transition-colors duration-500 ${
+              scrolled ? "text-black" : "text-white"
+            }`}
+            onClick={() => setMobileOpen(true)}
           >
-            {mobileOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+            <svg
+              className="w-8 h-8 sm:w-9 sm:h-9"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        )}
       </div>
 
       {/* Mobile Drawer (Right Slide-In) */}
@@ -118,23 +143,29 @@ const Navbar = () => {
         }`}
         ref={drawerRef}
       >
-        <div className="flex flex-col justify-between h-full">
+        <div className="flex flex-col justify-between h-full relative">
+          {/* Close Button top-right */}
+          <button
+            onClick={() => setMobileOpen(false)}
+            className="absolute top-4 right-4 z-50"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
           {/* Nav */}
           <div className="flex flex-col justify-center h-full px-6">
-            <div className="flex justify-end pt-6">
-              <button onClick={() => setMobileOpen(false)}>
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            <nav className="mt-10 space-y-6 font-poppins text-base uppercase tracking-wide font-medium">
+            <nav className="mt-16 font-poppins text-lg uppercase tracking-wide font-medium w-full">
               {navItems.map(({ label, path }) => {
                 const isActive = location.pathname === path;
                 return (
@@ -142,14 +173,13 @@ const Navbar = () => {
                     key={label}
                     to={path}
                     onClick={() => setMobileOpen(false)}
-                    className={`flex items-center ${
-                      isActive ? "text-primary font-semibold" : "text-black"
+                    className={`block px-6 py-4 w-full ${
+                      isActive
+                        ? "text-primary font-semibold relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-[20px] before:h-[2px] before:bg-primary"
+                        : "text-black"
                     }`}
                   >
-                    {isActive && (
-                      <span className="block h-[2px] w-5 bg-primary mr-3" />
-                    )}
-                    <span>{label}</span>
+                    {label}
                   </Link>
                 );
               })}
@@ -159,8 +189,12 @@ const Navbar = () => {
           {/* Bottom Bar */}
           <div className="border-t px-6 py-4 space-y-3 bg-white">
             <div className="flex justify-between items-center">
-              <a href="tel:+123456789" className="text-xl">📞</a>
-              <a href="mailto:info@example.com" className="text-xl">✉️</a>
+              <a href="tel:+123456789" className="text-xl">
+                📞
+              </a>
+              <a href="mailto:info@example.com" className="text-xl">
+                ✉️
+              </a>
             </div>
             <Link
               to="/contact"

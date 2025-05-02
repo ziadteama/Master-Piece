@@ -44,7 +44,7 @@ export default function AboutSection() {
           <div className="flex items-center mb-4">
             <span className="inline-block w-6 h-[2px] bg-primary mr-4"></span>
             <span className="uppercase text-sm tracking-wider font-semibold">
-              Est. 1989
+              Est. 2007
             </span>
           </div>
 
