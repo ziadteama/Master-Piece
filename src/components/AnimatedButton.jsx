@@ -1,6 +1,7 @@
+// Updated AnimatedButton.jsx
 export default function AnimatedButton({ children, onClick, className = "", href }) {
     const baseStyles =
-      "relative inline-block group overflow-hidden " + className;
+      "relative inline-block overflow-hidden group " + className;
   
     const content = (
       <>
@@ -12,7 +13,7 @@ export default function AnimatedButton({ children, onClick, className = "", href
     );
   
     return href ? (
-      <a href={href} className={baseStyles}>
+      <a href={href} onClick={onClick} className={baseStyles}>
         {content}
       </a>
     ) : (
