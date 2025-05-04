@@ -91,19 +91,14 @@ const ProjectSection = () => {
 
             return (
               <SwiperSlide key={project.id}>
-                {shouldAnimate ? (
-                  <motion.div
-                    initial={{ opacity: 0, y: 60 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: i * 0.15 }}
-                  >
-                    <ProjectCard {...project} showButton />
-                  </motion.div>
-                ) : (
-                  <div>
-                    <ProjectCard {...project} showButton />
-                  </div>
-                )}
+                <motion.div
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                >
+                  <ProjectCard {...project} showButton />
+                </motion.div>
               </SwiperSlide>
             );
           })}

@@ -47,7 +47,8 @@ export default function ServicesSplitOverlay() {
                 onMouseEnter={() => setActiveIndex(index)}
                 onMouseLeave={() => setActiveIndex(null)}
                 initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 className={`flex-1 relative cursor-pointer transition-opacity duration-300 ${
                   isDimmed ? "opacity-40" : "opacity-100"
@@ -99,7 +100,7 @@ export default function ServicesSplitOverlay() {
                   <motion.h3
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, delay: index * 0.15 }}
                     className="text-white text-3xl sm:text-xl font-semibold"
                   >
