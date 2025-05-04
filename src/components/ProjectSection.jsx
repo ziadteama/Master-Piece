@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -10,6 +11,7 @@ import ProjectCard from "./ProjectCard";
 
 const ProjectSection = () => {
   const swiperRef = useRef(null);
+  const [maxAnimatedIndex, setMaxAnimatedIndex] = useState(0);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -26,11 +28,29 @@ const ProjectSection = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // Set animation limit based on screen size
+  useEffect(() => {
+    const width = window.innerWidth;
+    if (width >= 1024) {
+      setMaxAnimatedIndex(2); // 3 cards
+    } else if (width >= 640) {
+      setMaxAnimatedIndex(1); // 2 cards
+    } else {
+      setMaxAnimatedIndex(0); // 1 card
+    }
+  }, []);
+
   return (
     <section className="bg-[#f9f9f9] py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-10">
+        {/* Header with animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="flex justify-between items-center mb-10"
+        >
           <div className="flex items-center gap-3">
             <span className="w-10 h-[2.2px] bg-primary block"></span>
             <h2 className="uppercase text-sm font-semibold tracking-wider text-black font-poppins">
@@ -43,7 +63,7 @@ const ProjectSection = () => {
           >
             View All
           </a>
-        </div>
+        </motion.div>
 
         {/* Swiper Carousel */}
         <Swiper
@@ -66,11 +86,27 @@ const ProjectSection = () => {
           modules={[Pagination, Keyboard]}
           className="project-swiper"
         >
-          {projects.map((project) => (
-            <SwiperSlide key={project.id}>
-              <ProjectCard {...project} showButton />
-            </SwiperSlide>
-          ))}
+          {projects.map((project, i) => {
+            const shouldAnimate = i <= maxAnimatedIndex;
+
+            return (
+              <SwiperSlide key={project.id}>
+                {shouldAnimate ? (
+                  <motion.div
+                    initial={{ opacity: 0, y: 60 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: i * 0.15 }}
+                  >
+                    <ProjectCard {...project} showButton />
+                  </motion.div>
+                ) : (
+                  <div>
+                    <ProjectCard {...project} showButton />
+                  </div>
+                )}
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
 
         {/* Pagination Styling */}
@@ -113,4 +149,3 @@ const ProjectSection = () => {
 };
 
 export default ProjectSection;
-  
