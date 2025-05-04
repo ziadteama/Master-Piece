@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
-const slides = [
-  "/src/assets/images/hero-bg-1.png",
-  "/src/assets/images/hero-bg-2.png",
-  "/src/assets/images/hero-bg-3.png",
-  "/src/assets/images/hero-bg-4.png",
-];
+import hero1 from '../assets/images/hero-bg-1.png';
+import hero2 from '../assets/images/hero-bg-2.png';
+import hero3 from '../assets/images/hero-bg-3.png';
+import hero4 from '../assets/images/hero-bg-4.png';
+
+const slides = [hero1, hero2, hero3, hero4];
 
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
@@ -24,7 +24,6 @@ const HeroSlider = () => {
     timeoutRef.current = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 5000);
-
     return () => clearTimeout(timeoutRef.current);
   }, [current]);
 
@@ -51,7 +50,6 @@ const HeroSlider = () => {
                 Masterpiece Contractors
               </span>
             </div>
-
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold font-chillax uppercase tracking-tight leading-[1.4] max-w-[90vw] sm:max-w-[80vw] md:max-w-[55vw]">
               Integrated Contracting & Property Services Specialists
             </h1>

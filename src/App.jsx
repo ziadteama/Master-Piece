@@ -1,19 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Services from './pages/Services';
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Services from './pages/Services'
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/services" element={<Services />} />
 
-        {/* Future pages */}
-        {/* <Route path="/projects" element={<Projects />} /> */}
-      </Routes>
-    </Router>
-  );
+      {/* Future pages */}
+      {/* <Route path="/projects" element={<Projects />} /> */}
+    </Routes>
+  )
 }
 
-export default App;
+export default App
