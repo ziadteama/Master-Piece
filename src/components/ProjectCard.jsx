@@ -60,8 +60,8 @@ const ProjectCard = ({ title, imageUrl, categories, showButton }) => {
         </div>
 
         {/* Button area */}
-        <div className="px-4 pt-2 pb-1 w-full flex justify-center">
-          {showButton && (
+        <div className="px-4  sm:pb-1 w-full flex justify-center">
+        {showButton && (
             <>
               {/* Mobile: always show */}
               {isMobile ? (
