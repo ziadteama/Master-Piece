@@ -61,7 +61,7 @@ const Navbar = () => {
         }`}
       >
         {/* Logo with padding */}
-        <div className="w-[72px] sm:w-[84px] pt-2 pb-2 sm:pt-3 sm:pb-3 lg:pt-1 lg:pb-1 transition-all duration-300">
+        <div className="w-[60px] sm:w-[72px] md:w-[84px] pt-1.5 pb-1.5 sm:pt-3 sm:pb-3 lg:pt-1 lg:pb-1 transition-all duration-300">
           <img
             src={Logo}
             alt="Masterpiece Logo"
@@ -120,18 +120,16 @@ const Navbar = () => {
             }`}
             onClick={() => setMobileOpen(true)}
           >
-            <svg
-              className="w-8 h-8 sm:w-9 sm:h-9"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
+            <div
+              className={`md:hidden z-50 relative flex flex-col justify-center gap-[6px] w-[38px] h-[32px] transition-all duration-300 ${
+                scrolled ? "text-black" : "text-white"
+              }`}
+              onClick={() => setMobileOpen(true)}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+              <span className="block w-full h-[2px] bg-current"></span>
+              <span className="block h-[2px] bg-current ml-3 w-[calc(100%-12px)]"></span>
+              <span className="block w-full h-[2px] bg-current"></span>
+            </div>
           </button>
         )}
       </div>
@@ -189,10 +187,10 @@ const Navbar = () => {
           {/* Bottom Bar */}
           <div className="border-t px-6 py-4 space-y-3 bg-white">
             <div className="flex justify-between items-center">
-              <a href="tel:+123456789" className="text-xl">
+              <a href="tel:+20222661712" className="text-xl">
                 📞
               </a>
-              <a href="mailto:info@example.com" className="text-xl">
+              <a href="mailto:info@masterpiece-eg.com" className="text-xl">
                 ✉️
               </a>
             </div>
