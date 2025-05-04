@@ -5,11 +5,12 @@ import startBg from "../assets/images/start-bg.png"; // Replace with actual dark
 const StartProject = () => {
   return (
     <section
-      className="relative text-white min-h-[40vh] flex items-center justify-center px-6 bg-cover bg-center"
-      style={{
-        backgroundImage: `linear-gradient(rgba(10, 20, 25, 0.85), rgba(10, 20, 25, 0.85)), url(${startBg})`,
-      }}
-    >
+  className="bg-cover bg-center text-white min-h-[45vh] flex items-center justify-center px-6"
+  style={{
+    backgroundImage: `linear-gradient(rgba(6, 24, 32, 0.85), rgba(6, 24, 32, 0.85)), url(${startBg})`
+  }}
+>
+
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-9 max-w-full mx-auto">
           Ready to create your next Masterpiece?{" "}
