@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 import hero1 from '../assets/images/hero-bg-1.png';
 import hero2 from '../assets/images/hero-bg-2.png';
@@ -41,7 +42,13 @@ const HeroSlider = () => {
         </div>
       ))}
 
-      <div className="absolute top-1/2 sm:top-[40vh] lg:top-[36vh] -translate-y-1/2 sm:translate-y-0 left-0 z-30 text-white w-full">
+      <motion.div
+        key={current} // ensures animation re-triggers on slide change
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="absolute top-1/2 sm:top-[40vh] lg:top-[36vh] -translate-y-1/2 sm:translate-y-0 left-0 z-30 text-white w-full"
+      >
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="max-w-full sm:max-w-[700px]">
             <div className="flex items-center gap-3 mb-4">
@@ -55,7 +62,7 @@ const HeroSlider = () => {
             </h1>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <div className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-30 flex-col items-end gap-3 pr-[1px] sm:pr-0">
         {slides.map((_, i) => (
