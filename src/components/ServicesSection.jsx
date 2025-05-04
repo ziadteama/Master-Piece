@@ -37,37 +37,51 @@ export default function ServicesSplitOverlay() {
         <div className="absolute inset-0 bg-black/65 z-10" />
 
         <div className="relative z-20 flex w-full divide-x divide-white/10">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              onMouseEnter={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(null)}
-              className="flex-1 relative cursor-pointer"
-            >
-              <div className="absolute inset-0 flex items-center justify-center px-2 text-center">
-                <h3 className="text-white font-semibold text-xl md:text-2xl">
-                  {service.title}
-                </h3>
-              </div>
+          {services.map((service, index) => {
+            const isActive = activeIndex === index;
+            const isDimmed = activeIndex !== null && !isActive;
 
-              <AnimatePresence>
-                {activeIndex === index && (
-                  <motion.div
-                    key="button"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 30 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute bottom-8 w-full justify-center hidden md:flex"
+            return (
+              <motion.div
+                key={index}
+                onMouseEnter={() => setActiveIndex(index)}
+                onMouseLeave={() => setActiveIndex(null)}
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className={`flex-1 relative cursor-pointer transition-opacity duration-300 ${
+                  isDimmed ? "opacity-40" : "opacity-100"
+                }`}
+              >
+                <div className="absolute inset-0 flex items-center justify-center px-2 text-center">
+                  <h3
+                    className={`font-semibold text-xl md:text-2xl transition-opacity duration-300 ${
+                      isDimmed ? "text-white/40" : "text-white"
+                    }`}
                   >
-                    <div className="group">
-                      <AnimatedButton>Learn More</AnimatedButton>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+                    {service.title}
+                  </h3>
+                </div>
+
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.div
+                      key="button"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 30 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute bottom-8 w-full justify-center hidden md:flex"
+                    >
+                      <div className="group">
+                        <AnimatedButton>Learn More</AnimatedButton>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
@@ -82,14 +96,20 @@ export default function ServicesSplitOverlay() {
               >
                 <div className="absolute inset-0 bg-black/65" />
                 <div className="relative z-10 flex items-center justify-center h-full text-center px-3">
-                  <h3 className="text-white text-3xl sm:text-xl font-semibold">
+                  <motion.h3
+                    initial={{ opacity: 0, y: 60 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.15 }}
+                    className="text-white text-3xl sm:text-xl font-semibold"
+                  >
                     {service.title}
-                  </h3>
+                  </motion.h3>
                 </div>
               </div>
             </div>
 
-            {/* Divider line (full width, thinner) */}
+            {/* Divider line */}
             {index < services.length - 1 && (
               <div className="h-px bg-white/10 w-full my-3" />
             )}
