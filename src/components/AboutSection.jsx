@@ -16,9 +16,8 @@ export default function AboutSection() {
         backgroundPosition: "center",
       }}
     >
-      {/* Responsive Layout */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Image First on Mobile */}
+        {/* Image Column */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,30 +32,42 @@ export default function AboutSection() {
           />
         </motion.div>
 
-        {/* Text Column */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="order-2 lg:order-1 text-left"
-        >
+        {/* Text Column (now animated separately) */}
+        <div className="order-2 lg:order-1 text-left">
           {/* EST. 2007 + Line */}
-          <div className="flex items-center mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center mb-4"
+          >
             <span className="inline-block w-6 h-[2px] bg-primary mr-4"></span>
             <span className="uppercase text-sm tracking-wider font-semibold">
               Est. 2007
             </span>
-          </div>
+          </motion.div>
 
           {/* Headline */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6"
+          >
             Our Heritage Is <br className="hidden sm:inline-block" />
             Building Your Future
-          </h2>
+          </motion.h2>
 
-          {/* Paragraph (from profile) */}
-          <p className="text-[#7D8287] text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
+          {/* Paragraph */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-[#7D8287] text-base sm:text-lg leading-relaxed mb-8 max-w-2xl"
+          >
             We began as a small, ambitious team with a passion for delivering
             high-quality, meaningful projects. Over time, our dedication to
             excellence has shaped Masterpiece into a trusted name in design and
@@ -65,11 +76,18 @@ export default function AboutSection() {
             the communities and individuals who bring these spaces to life. From
             concept to completion, we craft experiences that inspire, endure,
             and elevate.
-          </p>
+          </motion.p>
 
           {/* Button */}
-          <AnimatedButton href="#about">About Us</AnimatedButton>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <AnimatedButton href="#about">About Us</AnimatedButton>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
