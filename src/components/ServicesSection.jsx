@@ -2,16 +2,16 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedButton from "./AnimatedButton";
 import contracting from "../assets/images/contracting.png";
-import trading from "../assets/images/trading.png";
-import developing from "../assets/images/developing.png";
-import designing from "../assets/images/designing.png";
+import facilities from "../assets/images/facilities.png";
+import fitout from "../assets/images/fitout.png";
+import mep from "../assets/images/mep.png";
 
 export default function ServicesSplitOverlay() {
   const services = [
-    { title: "Contracting", image: contracting },
-    { title: "Trading", image: trading },
-    { title: "Developing", image: developing },
-    { title: "Designing", image: designing },
+    { title: "General Contracting", image: contracting },
+    { title: "Facilities & Property Management", image: facilities },
+    { title: "Interior Finishing & Fit-Out", image: fitout },
+    { title: "MEP Works", image: mep },
   ];
 
   const [activeIndex, setActiveIndex] = useState(null);
