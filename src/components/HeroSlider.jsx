@@ -42,7 +42,7 @@ const HeroSlider = () => {
         </div>
       ))}
 
-      <div className="absolute top-[44vh] left-0 z-30 text-white w-full">
+      <div className="absolute top-1/2 sm:top-[40vh] lg:top-[36vh] -translate-y-1/2 sm:translate-y-0 left-0 z-30 text-white w-full">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="max-w-full sm:max-w-[700px]">
             <div className="flex items-center gap-3 mb-4">
@@ -53,23 +53,23 @@ const HeroSlider = () => {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold font-chillax uppercase tracking-tight leading-[1.4] max-w-[90vw] sm:max-w-[80vw] md:max-w-[55vw]">
-              Building With Precision and Integrity & Managing Properties
+              Integrated Contracting & Property Services Specialists
             </h1>
           </div>
         </div>
       </div>
 
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 z-30 flex flex-col items-end gap-3 pr-2">
+      <div className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-30 flex-col items-end gap-3 pr-[1px] sm:pr-0">
         {slides.map((_, i) => (
           <div
             key={i}
             onClick={() => transitionTo(i)}
             className={`transition-all duration-300 cursor-pointer bg-white origin-right ${
               current === i
-                ? "w-12 h-[2px] opacity-100"
-                : "w-6 h-[2px] opacity-40"
+                ? "w-14 h-[3px] opacity-100 md:w-16 md:h-[4px]"
+                : "w-7 h-[2px] opacity-40 md:w-8 md:h-[3px]"
             }`}
-          ></div>
+          />
         ))}
       </div>
     </div>
