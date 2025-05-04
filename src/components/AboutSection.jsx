@@ -29,7 +29,7 @@ export default function AboutSection() {
           <img
             src={img}
             alt="About Masterpiece"
-            className="w-full h-auto object-cover transition-transform duration-500 transform hover:scale-105 shadow-xl"
+            className="w-full h-auto object-cover transition-transform duration-500 shadow-xl"
           />
         </motion.div>
 
@@ -41,7 +41,7 @@ export default function AboutSection() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="order-2 lg:order-1 text-left"
         >
-          {/* EST. 1989 + Line */}
+          {/* EST. 2007 + Line */}
           <div className="flex items-center mb-4">
             <span className="inline-block w-6 h-[2px] bg-primary mr-4"></span>
             <span className="uppercase text-sm tracking-wider font-semibold">
@@ -55,17 +55,20 @@ export default function AboutSection() {
             Building Your Future
           </h2>
 
-          {/* Paragraph */}
+          {/* Paragraph (from profile) */}
           <p className="text-[#7D8287] text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
-            We undertake projects of all shapes and sizes – each and every one
-            of which is treated with the same core values that characterise our
-            company – honesty, integrity, professional advice and quality
-            craftsmanship.
+            We began as a small, ambitious team with a passion for delivering
+            high-quality, meaningful projects. Over time, our dedication to
+            excellence has shaped Masterpiece into a trusted name in design and
+            construction. Today, whether designing homes, offices, or retail
+            spaces, we approach every project with the same purpose: to serve
+            the communities and individuals who bring these spaces to life. From
+            concept to completion, we craft experiences that inspire, endure,
+            and elevate.
           </p>
 
           {/* Button */}
           <AnimatedButton href="#about">About Us</AnimatedButton>
-
         </motion.div>
       </div>
     </section>
