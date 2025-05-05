@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-import hero1 from '../assets/images/hero-bg-1.png';
-import hero2 from '../assets/images/hero-bg-2.png';
-import hero3 from '../assets/images/hero-bg-3.png';
-import hero4 from '../assets/images/hero-bg-4.png';
+import hero1 from "../assets/images/hero-bg-1.png";
+import hero2 from "../assets/images/hero-bg-2.png";
+import hero3 from "../assets/images/hero-bg-3.png";
+import hero4 from "../assets/images/hero-bg-4.png";
 
 const slides = [hero1, hero2, hero3, hero4];
 
@@ -43,9 +43,9 @@ const HeroSlider = () => {
       ))}
 
       <motion.div
-        key={current} // ensures animation re-triggers on slide change
         initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="absolute top-1/2 sm:top-[40vh] lg:top-[36vh] -translate-y-1/2 sm:translate-y-0 left-0 z-30 text-white w-full"
       >
