@@ -11,39 +11,32 @@ import ProjectCard from "./ProjectCard";
 
 const ProjectSection = () => {
   const swiperRef = useRef(null);
-  const [maxAnimatedIndex, setMaxAnimatedIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(1); // default to 1
 
+  // Detect screen size and set how many cards are visible initially
+  useEffect(() => {
+    const width = window.innerWidth;
+    if (width >= 1024) setVisibleCount(3);
+    else if (width >= 640) setVisibleCount(2);
+    else setVisibleCount(1);
+  }, []);
+
+  // Keyboard nav (optional)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!swiperRef.current) return;
       const swiper = swiperRef.current.swiper;
-      if (e.key === "ArrowRight") {
-        swiper.slideNext();
-      } else if (e.key === "ArrowLeft") {
-        swiper.slidePrev();
-      }
+      if (e.key === "ArrowRight") swiper.slideNext();
+      else if (e.key === "ArrowLeft") swiper.slidePrev();
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  // Set animation limit based on screen size
-  useEffect(() => {
-    const width = window.innerWidth;
-    if (width >= 1024) {
-      setMaxAnimatedIndex(2); // 3 cards
-    } else if (width >= 640) {
-      setMaxAnimatedIndex(1); // 2 cards
-    } else {
-      setMaxAnimatedIndex(0); // 1 card
-    }
   }, []);
 
   return (
     <section className="bg-[#f9f9f9] py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Header with animation */}
+        {/* Header Animation */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,11 +79,9 @@ const ProjectSection = () => {
           modules={[Pagination, Keyboard]}
           className="project-swiper"
         >
-          {projects.map((project, i) => {
-            const shouldAnimate = i <= maxAnimatedIndex;
-
-            return (
-              <SwiperSlide key={project.id}>
+          {projects.map((project, i) => (
+            <SwiperSlide key={project.id}>
+              {i < visibleCount ? (
                 <motion.div
                   initial={{ opacity: 0, y: 60 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -99,9 +90,13 @@ const ProjectSection = () => {
                 >
                   <ProjectCard {...project} showButton />
                 </motion.div>
-              </SwiperSlide>
-            );
-          })}
+              ) : (
+                <div>
+                  <ProjectCard {...project} showButton />
+                </div>
+              )}
+            </SwiperSlide>
+          ))}
         </Swiper>
 
         {/* Pagination Styling */}
