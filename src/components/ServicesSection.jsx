@@ -95,7 +95,7 @@ export default function ServicesSplitOverlay() {
                 className="h-[180px] sm:h-[200px] bg-cover bg-center"
                 style={{ backgroundImage: `url(${service.image})` }}
               >
-                <div className="absolute inset-0 bg-black/65" />
+                <div className="absolute inset-0 bg-black/40" />
                 <div className="relative z-10 flex items-center justify-center h-full text-center px-3">
                   <motion.h3
                     initial={{ opacity: 0, y: 60 }}
