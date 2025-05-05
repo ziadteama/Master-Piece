@@ -34,7 +34,7 @@ export default function ServicesSplitOverlay() {
           )}
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-black/65 z-10" />
+        <div className="absolute inset-0 bg-black/35 z-10" />
 
         <div className="relative z-20 flex w-full divide-x divide-white/10">
           {services.map((service, index) => {
