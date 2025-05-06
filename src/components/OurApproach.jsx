@@ -9,7 +9,7 @@ export default function OurApproach() {
   return (
     <section
       id="approach"
-      className="w-full bg-white py-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px]"
+      className="w-full bg-[#FEFEFE] py-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px]"
     >
       <div className="max-w-[1140px] mx-auto px-2 sm:px-0">
         {/* Title (mobile only) */}
@@ -47,8 +47,8 @@ export default function OurApproach() {
             breakpoints={{
               0: { slidesPerView: 1.2 },
               768: { slidesPerView: 1.5 },
-              1024: { slidesPerView: 2.2 },
-              1280: { slidesPerView: 2.7 },
+              1024: { slidesPerView: 1.9 },
+              1280: { slidesPerView: 2.1 },
             }}
             className="w-full"
           >

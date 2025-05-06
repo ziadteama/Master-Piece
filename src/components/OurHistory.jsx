@@ -2,7 +2,7 @@ export default function OurHistory() {
   return (
     <section
       id="history"
-      className="w-full bg-white py-20 px-6 sm:px-8 md:px-10 lg:px-16 xl:px-20"
+      className="w-full bg-[#FEFEFE] py-20 px-6 sm:px-8 md:px-10 lg:px-16 xl:px-20"
     >
       <div className="max-w-[1140px] mx-auto">
         {/* Title (small screens only) */}
