@@ -5,7 +5,7 @@ import person4 from "../assets/images/people/human.jpg";
 
 const people = [
   {
-    name: "Eng. Mostafa Mahmoud",
+    name: "Mostafa Mahmoud",
     imageUrl: person1,
     title: "Chairman of the Board",
     qualifications: "B.Sc. Engineering, Business Leadership",
@@ -14,7 +14,7 @@ const people = [
       "Founder and leader of Masterpiece Group across Egypt, Dubai, and Kenya. A visionary in engineering and development with executive roles across multiple regional companies and federations.",
   },
   {
-    name: "Eng. Hesham Teama",
+    name: "Hesham Teama",
     imageUrl: person4,
     title: "Project Management Officer",
     qualifications: "B.Sc. Architecture, Certified PM",
@@ -23,7 +23,7 @@ const people = [
       "Former Palm Hills Development Director. Led major projects across Africa and the Gulf. Specialist in high-scale coordination and delivery under pressure.",
   },
   {
-    name: "Eng. Ahmed Hussein",
+    name: "Ahmed Hussein",
     imageUrl: person2,
     title: "General Manager",
     qualifications: "B.Sc. Civil Engineering, PMP",
@@ -32,7 +32,7 @@ const people = [
       "Manages diverse portfolios of projects. Known for strategic leadership and precision in execution, from concept to delivery across residential and commercial developments.",
   },
   {
-    name: "Eng. Dina Hassan",
+    name: "Dina Hassan",
     imageUrl: person3,
     title: "Chief Operating Officer",
     qualifications: "MBA, MSc Project Mgmt, PRMG Diploma",

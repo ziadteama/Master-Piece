@@ -8,14 +8,28 @@ export default function OurPeople() {
   return (
     <section
       id="people"
-      className="bg-[#0a0a0a] py-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px]"
+      className="bg-[#FEFEFE] py-20 px-6 sm:px-8 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px]"
     >
-      <div className="max-w-[1400px] mx-auto text-center">
-        <h2 className="text-4xl font-bold text-white mb-16 font-poppins">
+      {/* Text Section */}
+      <div className="max-w-[1140px] mx-auto text-left">
+        {/* Title (small screens only) */}
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6 block lg:hidden font-poppins">
           Our People
         </h2>
 
-        {/* Grid using extracted PersonCardGrid component */}
+        {/* Intro paragraph */}
+        <p className="text-lg leading-8 font-medium text-black mb-6 font-poppins">
+          At Masterpiece, our people are more than professionals — they are the driving force behind every successful project. Each expert brings unmatched precision, passion, and purpose to the environments we shape.
+        </p>
+
+        {/* Supporting paragraph */}
+        <p className="text-lg leading-8 text-gray-600 font-normal mb-12 font-poppins">
+          From design thinkers and engineers to on-site leaders, our team reflects the values that define Masterpiece — integrity, innovation, and human-centered solutions.
+        </p>
+      </div>
+
+      {/* Card Grid Section (wider) */}
+      <div className="max-w-[1400px] mx-auto">
         <PersonCardGrid people={people} onCardClick={setActivePerson} />
       </div>
 
@@ -37,7 +51,9 @@ export default function OurPeople() {
             <h3 className="text-2xl font-bold text-[#16758a] mb-2 font-poppins">
               {activePerson.name}
             </h3>
-            <p className="text-sm font-semibold mb-1 font-poppins">{activePerson.title}</p>
+            <p className="text-sm font-semibold mb-1 font-poppins">
+              {activePerson.title}
+            </p>
             <p className="text-sm mb-1 font-poppins">
               <strong>Experience:</strong> {activePerson.experience}
             </p>
