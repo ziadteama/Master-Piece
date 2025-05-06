@@ -8,7 +8,7 @@ const StartProject = () => {
     <section
       className="bg-cover bg-center text-white min-h-[45vh] flex items-center justify-center px-6"
       style={{
-        backgroundImage: `linear-gradient(rgba(6, 24, 32, 0.85), rgba(6, 24, 32, 0.85)), url(${startBg})`,
+        backgroundImage: `linear-gradient(rgba(6, 24, 32, 0.45), rgba(6, 24, 32, 0.45)), url(${startBg})`,
       }}
     >
       <div className="text-center">
