@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import img from "../assets/images/aboutsection.png";
 import pattern from "../assets/images/about-pattern.png";
 import AnimatedButton from "./AnimatedButton";
+import { Link } from "react-router-dom";
 
 export default function AboutSection() {
   return (
@@ -9,7 +10,7 @@ export default function AboutSection() {
       id="about"
       className="relative text-white px-4 sm:px-8 lg:px-24 py-20"
       style={{
-        backgroundColor: "#0F1113",
+        backgroundColor: "#031016",
         backgroundImage: `url(${pattern})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -85,7 +86,9 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <AnimatedButton href="#about">About Us</AnimatedButton>
+            <AnimatedButton as={Link} to="/about">
+              About Us
+            </AnimatedButton>{" "}
           </motion.div>
         </div>
       </div>

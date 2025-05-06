@@ -1,12 +1,14 @@
 export default function AnimatedButton({
-  children,
-  onClick,
-  className = "",
+  as: Component,
+  to,
   href,
+  onClick,
+  children,
+  className = "",
   variant = "default",
+  ...rest
 }) {
   const isInverted = variant === "inverted";
-
   const wrapperClasses = `relative inline-block overflow-hidden ${className}`;
 
   const content = (
@@ -34,12 +36,33 @@ export default function AnimatedButton({
     </div>
   );
 
-  return href ? (
-    <a href={href} onClick={onClick} className={wrapperClasses}>
-      {content}
-    </a>
-  ) : (
-    <button onClick={onClick} className={wrapperClasses}>
+  // Priority 1: Custom `as` component like Link
+  if (Component) {
+    return (
+      <Component
+        to={to}
+        href={href}
+        onClick={onClick}
+        className={wrapperClasses}
+        {...rest}
+      >
+        {content}
+      </Component>
+    );
+  }
+
+  // Priority 2: External link
+  if (href) {
+    return (
+      <a href={href} onClick={onClick} className={wrapperClasses} {...rest}>
+        {content}
+      </a>
+    );
+  }
+
+  // Fallback to button
+  return (
+    <button onClick={onClick} className={wrapperClasses} {...rest}>
       {content}
     </button>
   );
