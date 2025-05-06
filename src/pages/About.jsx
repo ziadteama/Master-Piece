@@ -4,6 +4,7 @@ import AboutHero from "../components/AboutHero";
 import SubNav from "../components/AboutSubNav";
 import OurHistory from "../components/OurHistory";
 import OurApproach from "../components/OurApproach";
+import OurPeople from "../components/OurPeople";
 
 export default function AboutPage() {
   return (
@@ -13,6 +14,7 @@ export default function AboutPage() {
       <SubNav />
       <OurHistory />
       <OurApproach />
+      <OurPeople />
       {/* Additional About sections will go here... */}
     </div>
   );
