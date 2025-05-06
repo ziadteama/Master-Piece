@@ -2,6 +2,8 @@
 import Navbar from "../components/Navbar";
 import AboutHero from "../components/AboutHero";
 import SubNav from "../components/AboutSubNav";
+import OurHistory from "../components/OurHistory";
+import OurApproach from "../components/OurApproach";
 
 export default function AboutPage() {
   return (
@@ -9,6 +11,8 @@ export default function AboutPage() {
       <Navbar />
       <AboutHero />
       <SubNav />
+      <OurHistory />
+      <OurApproach />
       {/* Additional About sections will go here... */}
     </div>
   );

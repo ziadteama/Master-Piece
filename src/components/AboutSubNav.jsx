@@ -41,14 +41,14 @@ export default function AboutSubNav() {
   };
 
   return (
-    <div className="sticky top-[72px] z-30 bg-white border-b border-gray-200 hidden sm:block">
+    <div className="sticky top-[96px] z-30 bg-white border-b border-gray-200 hidden sm:block">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10">
         <nav className="flex justify-center gap-6 sm:gap-10 text-sm uppercase font-semibold tracking-widest">
           {navItems.map(({ label, target }) => (
             <button
               key={target}
               onClick={() => handleScroll(target)}
-              className={`relative px-3 pt-3 pb-4 transition-colors duration-300 ${
+              className={`relative px-3  py-5 transition-colors duration-300 ${
                 active === target
                   ? "text-black"
                   : "text-gray-400 hover:text-black"
