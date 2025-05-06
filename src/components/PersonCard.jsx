@@ -19,8 +19,14 @@ export default function PersonCardGrid({ people, onCardClick }) {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       {people.map((person, idx) => {
         const isHovered = isHoveredIdx === idx;
-        const showDetails = isMobile || isHovered;
-        const brightnessClass = !isMobile && isHovered ? "brightness-[0.6]" : "";
+        const showButton = isMobile || isHovered;
+        const brightnessClass =
+          !isMobile && isHovered ? "brightness-[0.6]" : "";
+        const overlayHeight = isMobile
+          ? "h-[35%]"
+          : isHovered
+          ? "h-[40%]"
+          : "h-[24%] lg:h-[28%]";
 
         return (
           <div
@@ -40,40 +46,45 @@ export default function PersonCardGrid({ people, onCardClick }) {
             />
 
             {/* Animated Overlay */}
-            <AnimatePresence>
-              {showDetails && (
-                <motion.div
-                  key="overlay"
-                  initial={{ opacity: 0, scaleY: 0 }}
-                  animate={{ opacity: 1, scaleY: 1 }}
-                  exit={{ opacity: 0, scaleY: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="absolute bottom-0 left-0 right-0 origin-bottom bg-white px-4 text-center flex flex-col gap-y-2 pt-5 pb-6"
-                >
-                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold tracking-wide text-neutral-900 uppercase font-poppins">
-                    {person.name}
-                  </h3>
-                  <p className="text-[12px] text-[#666] font-medium font-poppins mb-2">
-                    {person.title}
-                  </p>
+            <div
+              className={`
+                absolute bottom-0 left-0 right-0 bg-white
+                transition-all duration-300 ease-in-out
+                flex flex-col justify-start ${overlayHeight}
+              `}
+            >
+              <div className="px-4 pt-4 pb-2 text-center flex flex-col gap-y-2">
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold tracking-wide text-neutral-900 uppercase font-poppins">
+                  {person.name}
+                </h3>
+                <p className="text-[12px] text-[#666] font-medium font-poppins mb-2">
+                  {person.title}
+                </p>
+              </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    transition={{ duration: 0.3, ease: "easeInOut", delay: 0.1 }}
-                    className="w-full"
-                  >
-                    <AnimatedButton
-                      variant="inverted"
-                      className="w-full text-sm py-2 px-6"
+              {/* Button section */}
+              <div className="px-4 sm:pb-1 w-full flex justify-center">
+                <AnimatePresence>
+                  {showButton && (
+                    <motion.div
+                      key="button"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 20 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full"
                     >
-                      View Profile
-                    </AnimatedButton>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                      <AnimatedButton
+                        variant="inverted"
+                        className="w-full text-sm py-2 px-6"
+                      >
+                        View Profile
+                      </AnimatedButton>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
         );
       })}
