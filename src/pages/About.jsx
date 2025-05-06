@@ -2,7 +2,7 @@
 import Navbar from "../components/Navbar";
 import AboutHero from "../components/AboutHero";
 import SubNav from "../components/AboutSubNav";
-import OurHistory from "../components/OurHistory";
+import OurHistory from  "../components/OurHistory";
 import OurApproach from "../components/OurApproach";
 import OurPeople from "../components/OurPeople";
 

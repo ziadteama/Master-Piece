@@ -22,11 +22,12 @@ export default function PersonCardGrid({ people, onCardClick }) {
         const showButton = isMobile || isHovered;
         const brightnessClass =
           !isMobile && isHovered ? "brightness-[0.6]" : "";
-        const overlayHeight = isMobile
-          ? "h-[35%]"
+          const overlayHeight = isMobile
+          ? "h-[40%]"
           : isHovered
           ? "h-[40%]"
           : "h-[24%] lg:h-[28%]";
+
 
         return (
           <div
@@ -54,8 +55,8 @@ export default function PersonCardGrid({ people, onCardClick }) {
               `}
             >
               <div className="px-4 pt-4 pb-2 text-center flex flex-col gap-y-2">
-                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold tracking-wide text-neutral-900 uppercase font-poppins">
-                  {person.name}
+              <h3 className="text-lg sm:text-base md:text-lg lg:text-xl font-semibold tracking-wide text-neutral-900 uppercase font-poppins">
+              {person.name}
                 </h3>
                 <p className="text-[12px] text-[#666] font-medium font-poppins mb-2">
                   {person.title}
@@ -63,7 +64,7 @@ export default function PersonCardGrid({ people, onCardClick }) {
               </div>
 
               {/* Button section */}
-              <div className="px-4 sm:pb-1 w-full flex justify-center">
+              <div className="px-4 pb-6 sm:mb-3 w-full flex justify-center">
                 <AnimatePresence>
                   {showButton && (
                     <motion.div
