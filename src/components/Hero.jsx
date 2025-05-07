@@ -1,4 +1,5 @@
 import pattern from '../assets/images/about-pattern.png';
+
 export default function Hero(props) {
   return (
     <section className="relative h-[50vh] sm:h-[55vh] md:h-[60vh] w-full overflow-hidden">
@@ -13,7 +14,7 @@ export default function Hero(props) {
       <img
         src={pattern}
         alt="Pattern"
-        className="absolute inset-0 w-full h-full object-cover  z-10 pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none"
       />
 
       {/* Dark Overlay */}
@@ -21,10 +22,11 @@ export default function Hero(props) {
 
       {/* Centered Heading */}
       <div className="relative z-30 flex items-center justify-center h-full px-4 text-center">
-        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide leading-tight">
+        <h1 className="text-white uppercase text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide leading-tight max-w-3xl mx-auto break-words">
           {props.text}
         </h1>
       </div>
     </section>
   );
 }
+  
