@@ -2,15 +2,12 @@ import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/autoplay";
-import { Autoplay } from "swiper/modules";
-
 import logo from "../assets/images/logo-placeholder.png"; // Replace with real logos
 
 export default function OurHistory() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
 
-  const logos = Array(20).fill(logo); // Repeat logos for seamless loop
+  const logos = Array(20).fill(logo); // Replace with actual logo images if needed
 
   return (
     <>
@@ -19,7 +16,7 @@ export default function OurHistory() {
         className="w-full bg-[#FEFEFE] py-20 px-6 sm:px-8 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px] pb-3"
       >
         <div className="max-w-[1140px] mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6 block lg:hidden">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6 block ">
             Our History
           </h2>
 
@@ -84,40 +81,42 @@ export default function OurHistory() {
         </div>
       </section>
 
-      {/* Logo Ticker Separator with bottom line */}
-      <div className="w-full bg-white pt-3 pb-1 overflow-hidden">
-        <div className="h-36 flex items-center">
-          <Swiper
-            modules={[Autoplay]}
-            loop={true}
-            freeMode={true}
-            speed={5000}
-            autoplay={{
-              delay: 0,
-              disableOnInteraction: false,
-            }}
-            slidesPerView="auto"
-            spaceBetween={80}
-            className="w-full"
-          >
-            {logos.map((src, idx) => (
-              <SwiperSlide
-                key={idx}
-                className="!w-auto flex items-center justify-center"
-              >
-                <img
-                  src={src}
-                  alt={`Logo ${idx + 1}`}
-                  className="h-40 sm:h-28 md:h-40 opacity-80 grayscale hover:opacity-100 hover:grayscale-0 transition duration-300"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+      {/* Static Logo Row - Responsive */}
+      {/* Enhanced Static Logo Row - Responsive */}
+      {/* Enhanced Static Logo Row - Responsive */}
+      <div className="w-full bg-[#F3F4F6] py-6 sm:py-8">
+  <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <h3 className="text-center text-[#16758a] text-xl sm:text-2xl font-semibold tracking-wide mb-6">
+      Trusted by Our Partners
+    </h3>
 
-        {/* Bottom colored separator line */}
-        <div className="w-full h-[3px] bg-[#16758a] mt-3 opacity-60 mb" />
-      </div>
+    <Swiper
+      slidesPerView={2}
+      spaceBetween={24}
+      breakpoints={{
+        640: { slidesPerView: 3 },
+        768: { slidesPerView: 4 },
+        1024: { slidesPerView: 5 },
+        1280: { slidesPerView: 6 },
+      }}
+      className="w-full"
+    >
+      {logos.map((src, idx) => (
+        <SwiperSlide
+          key={idx}
+          className="!w-auto flex items-center justify-center"
+        >
+          <img
+            src={src}
+            alt={`Logo ${idx + 1}`}
+            className="h-24 sm:h-28 md:h-32 lg:h-36 opacity-80 grayscale hover:opacity-100 hover:grayscale-0 transition duration-300"
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </div>
+</div>
+      
     </>
   );
 }

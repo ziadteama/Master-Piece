@@ -29,7 +29,7 @@ export default function OurPeople() {
       className="bg-[#FEFEFE] py-20 px-6 sm:px-8 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px]"
     >
       <div className="max-w-[1140px] mx-auto text-left">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6 block lg:hidden font-poppins">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6 block  font-poppins">
           Our People
         </h2>
 
