@@ -1,38 +1,57 @@
+import { useEffect } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import logo from "../assets/images/logo-placeholder.png"; // Replace with real logos
 
 export default function OurHistory() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
 
-  const logos = Array(20).fill(logo); // Replace with actual logo images if needed
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true, easing: "ease-in-out" });
+  }, []);
 
   return (
     <>
       <section
         id="history"
-        className="w-full bg-[#FEFEFE] py-20 px-6 sm:px-8 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px] pb-3"
+        className="w-full bg-[#f9fafb] py-16 mb-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px]"
       >
         <div className="max-w-[1140px] mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6 block ">
+          <h2
+            className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6"
+            data-aos="fade-up"
+          >
             Our History
           </h2>
 
-          <p className="text-lg leading-8 font-medium text-[#111827] mb-6">
+          <p
+            className="text-lg leading-8 font-medium text-[#111827] mb-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             Founded with the belief that construction is both an art and a
             responsibility, Masterpiece has grown from ambition into one of
             Egypt's most trusted names.
           </p>
 
-          <p className="text-lg leading-8 text-[#4B5563] font-normal mb-12">
+          <p
+            className="text-lg leading-8 text-[#4B5563] font-normal mb-12"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             From our earliest days, we've been committed to redefining industry
             standards — not just in design and structure, but in trust and
             reliability...
           </p>
 
-          <div className="border-l-4 border-[#16758a] pl-6 text-xl md:text-2xl font-semibold text-[#1F2937] italic mb-16">
+          <div
+            className="border-l-4 border-[#16758a] pl-6 text-xl md:text-2xl font-semibold text-[#1F2937] italic mb-16"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             “We build with purpose, not just concrete...”
             <div className="mt-4 not-italic font-normal text-base text-[#6B7280]">
               — Eng. Mostafa Mahmoud, Chairman of the Board
@@ -42,6 +61,8 @@ export default function OurHistory() {
           <div
             ref={ref}
             className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center mb-20"
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             <div>
               <p className="text-3xl font-bold text-[#16758a]">
@@ -80,42 +101,6 @@ export default function OurHistory() {
           </div>
         </div>
       </section>
-
-      {/* Static Logo Row - Responsive */}
-      {/* Enhanced Static Logo Row - Responsive */}
-      {/* Enhanced Static Logo Row - Responsive */}
-      <div className="w-full bg-[#F3F4F6] py-6 sm:py-8">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-center text-[#16758a] text-xl sm:text-2xl font-semibold tracking-wide mb-6">
-            Trusted by Our Partners
-          </h3>
-
-          <Swiper
-            slidesPerView={2}
-            spaceBetween={24}
-            breakpoints={{
-              640: { slidesPerView: 3 },
-              768: { slidesPerView: 4 },
-              1024: { slidesPerView: 5 },
-              1280: { slidesPerView: 6 },
-            }}
-            className="w-full"
-          >
-            {logos.map((src, idx) => (
-              <SwiperSlide
-                key={idx}
-                className="!w-auto flex items-center justify-center"
-              >
-                <img
-                  src={src}
-                  alt={`Logo ${idx + 1}`}
-                  className="h-24 sm:h-28 md:h-32 lg:h-36 opacity-80 grayscale hover:opacity-100 hover:grayscale-0 transition duration-300"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </div>
     </>
   );
 }

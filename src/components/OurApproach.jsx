@@ -1,114 +1,78 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-import slide1 from "../assets/images/approach-1.png";
-import slide2 from "../assets/images/approach-2.png";
-import slide3 from "../assets/images/approach-3.png";
-import slide4 from "../assets/images/approach-4.png";
+import logo from "../assets/images/logo-placeholder.png"; // Replace with real logos
 
 export default function OurApproach() {
-  const slides = [slide1, slide2, slide3, slide4];
+  const logos = Array(6).fill(logo); // Replace with actual logos
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: "ease-in-out",
+    });
+  }, []);
 
   return (
     <section
       id="approach"
-      className="w-full bg-[#FEFEFE] py-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px]"
+      className="w-full bg-[#FEFEFE] py-16 mb-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px]"
     >
-      {/* Text Container */}
+      {/* Text Content */}
       <div className="max-w-[1140px] mx-auto px-2 sm:px-0">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6 block ">
+        <h2
+          className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6"
+          data-aos="fade-up"
+        >
           Our Approach
         </h2>
 
-        <p className="text-lg leading-8 font-medium text-[#111827] mb-6">
+        <p
+          className="text-lg leading-8 font-medium text-[#111827] mb-6"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           At Masterpiece, our approach goes beyond building — we create
           purposeful spaces that harmonize design, durability, and the client's
           vision.
         </p>
-        <p className="text-lg leading-8 text-[#4B5563] font-normal mb-12">
+        <p
+          className="text-lg leading-8 text-[#4B5563] font-normal mb-10"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           From the first line drawn to the final stone placed, we maintain an
-          unwavering commitment to precision, transparency, and innovation. Our
-          multidisciplinary team works collaboratively, ensuring that each
+          unwavering commitment to precision, transparency, and innovation.
+          Our multidisciplinary team works collaboratively, ensuring that each
           project reflects the highest standards in architecture, engineering,
-          and interior detailing. With deep-rooted values and forward-thinking
-          design, we approach every challenge as an opportunity to transform
-          vision into reality.
+          and interior detailing.
         </p>
       </div>
 
-      {/* Full-Width Swiper with edge-connected images */}
-      <div className="-mx-4 sm:-mx-6 md:-mx-10 lg:-mx-16 xl:-mx-20">
-        <div className="relative w-full z-10 overflow-visible">
-          <Swiper
-            modules={[Navigation]}
-            navigation={{
-              nextEl: ".custom-next",
-              prevEl: ".custom-prev",
-            }}
-            loop={true}
-            centeredSlides={true}
-            spaceBetween={60}
-            breakpoints={{
-              0: { slidesPerView: 1.1 },
-              640: { slidesPerView: 1.4 },
-              768: { slidesPerView: 1.6 },
-              1024: { slidesPerView: 1.8 },
-              1280: { slidesPerView: 2.1 },
-            }}
-            className="w-full overflow-visible"
+      {/* Logo Grid Section */}
+      <div className="w-full bg-[#f9fafb] py-2 sm:py-6 lg:py-8 mt-2 sm:mt-4 lg:mt-6">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+          <h3
+            className="text-center text-[#16758a] text-base sm:text-xl font-semibold tracking-wide mb-4 sm:mb-6"
+            data-aos="fade-up"
           >
-            {slides.map((img, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="w-full h-[380px] sm:h-[460px] md:h-[520px] xl:h-[580px] overflow-hidden">
-                  <img
-                    src={img}
-                    alt={`Approach slide ${idx + 1}`}
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            Trusted by Our Partners
+          </h3>
 
-          {/* Navigation Arrows */}
-          <button
-            className="custom-prev z-50 absolute top-1/2 left-4 sm:left-6 transform -translate-y-1/2 bg-[#16758a] hover:bg-[#125f75] text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#16758a]"
-            aria-label="Previous slide"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 19l-7-7 7-7"
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-y-4 sm:gap-y-6 gap-x-4 sm:gap-x-6 items-center justify-items-center">
+            {logos.map((src, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt={`Partner Logo ${idx + 1}`}
+                data-aos="fade-up"
+                data-aos-delay={100 + idx * 100}
+                className="h-28 sm:h-32 md:h-36 lg:h-44 max-h-48 object-contain opacity-80 grayscale hover:opacity-100 hover:grayscale-0 transition duration-300"
               />
-            </svg>
-          </button>
-          <button
-            className="custom-next z-50 absolute top-1/2 right-4 sm:right-6 transform -translate-y-1/2 bg-[#16758a] hover:bg-[#125f75] text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#16758a]"
-            aria-label="Next slide"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>

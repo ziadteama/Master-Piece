@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import people from "../data/people";
 import PersonCardGrid from "./PersonCard";
 
@@ -17,6 +20,11 @@ export default function OurPeople() {
     };
   }, [activePerson]);
 
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true, easing: "ease-in-out" });
+  }, []);
+
   const handleOverlayClick = (e) => {
     if (e.target.id === "overlay") {
       setActivePerson(null);
@@ -29,20 +37,40 @@ export default function OurPeople() {
       className="bg-[#FEFEFE] py-20 px-6 sm:px-8 md:px-10 lg:px-16 xl:px-20 scroll-mt-[140px]"
     >
       <div className="max-w-[1140px] mx-auto text-left">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6 block  font-poppins">
+        <h2
+          className="text-3xl sm:text-4xl font-bold text-[#16758a] mb-6 font-poppins"
+          data-aos="fade-up"
+        >
           Our People
         </h2>
 
-        <p className="text-lg leading-8 font-medium text-[#111827] mb-6 font-poppins">
-          At Masterpiece, our people are more than professionals — they are the driving force behind every successful project. Each expert brings unmatched precision, passion, and purpose to the environments we shape.
+        <p
+          className="text-lg leading-8 font-medium text-[#111827] mb-6 font-poppins"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          At Masterpiece, our people are more than professionals — they are the
+          driving force behind every successful project. Each expert brings
+          unmatched precision, passion, and purpose to the environments we
+          shape.
         </p>
 
-        <p className="text-lg leading-8 text-[#4B5563] font-normal mb-12 font-poppins">
-          From design thinkers and engineers to on-site leaders, our team reflects the values that define Masterpiece — integrity, innovation, and human-centered solutions.
+        <p
+          className="text-lg leading-8 text-[#4B5563] font-normal mb-12 font-poppins"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          From design thinkers and engineers to on-site leaders, our team
+          reflects the values that define Masterpiece — integrity, innovation,
+          and human-centered solutions.
         </p>
       </div>
 
-      <div className="max-w-[1400px] mx-auto">
+      <div
+        className="max-w-[1400px] mx-auto"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
         <PersonCardGrid people={people} onCardClick={setActivePerson} />
       </div>
 
@@ -79,7 +107,8 @@ export default function OurPeople() {
 
               <div className="border-t border-gray-200 pt-4">
                 <p className="text-sm font-poppins text-[#111827]">
-                  <strong>Qualifications:</strong> {activePerson.qualifications}
+                  <strong>Qualifications:</strong>{" "}
+                  {activePerson.qualifications}
                 </p>
               </div>
 
