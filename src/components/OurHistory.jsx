@@ -85,38 +85,37 @@ export default function OurHistory() {
       {/* Enhanced Static Logo Row - Responsive */}
       {/* Enhanced Static Logo Row - Responsive */}
       <div className="w-full bg-[#F3F4F6] py-6 sm:py-8">
-  <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-    <h3 className="text-center text-[#16758a] text-xl sm:text-2xl font-semibold tracking-wide mb-6">
-      Trusted by Our Partners
-    </h3>
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-center text-[#16758a] text-xl sm:text-2xl font-semibold tracking-wide mb-6">
+            Trusted by Our Partners
+          </h3>
 
-    <Swiper
-      slidesPerView={2}
-      spaceBetween={24}
-      breakpoints={{
-        640: { slidesPerView: 3 },
-        768: { slidesPerView: 4 },
-        1024: { slidesPerView: 5 },
-        1280: { slidesPerView: 6 },
-      }}
-      className="w-full"
-    >
-      {logos.map((src, idx) => (
-        <SwiperSlide
-          key={idx}
-          className="!w-auto flex items-center justify-center"
-        >
-          <img
-            src={src}
-            alt={`Logo ${idx + 1}`}
-            className="h-24 sm:h-28 md:h-32 lg:h-36 opacity-80 grayscale hover:opacity-100 hover:grayscale-0 transition duration-300"
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </div>
-</div>
-      
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={24}
+            breakpoints={{
+              640: { slidesPerView: 3 },
+              768: { slidesPerView: 4 },
+              1024: { slidesPerView: 5 },
+              1280: { slidesPerView: 6 },
+            }}
+            className="w-full"
+          >
+            {logos.map((src, idx) => (
+              <SwiperSlide
+                key={idx}
+                className="!w-auto flex items-center justify-center"
+              >
+                <img
+                  src={src}
+                  alt={`Logo ${idx + 1}`}
+                  className="h-24 sm:h-28 md:h-32 lg:h-36 opacity-80 grayscale hover:opacity-100 hover:grayscale-0 transition duration-300"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
     </>
   );
 }
