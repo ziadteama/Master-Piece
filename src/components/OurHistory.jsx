@@ -116,7 +116,7 @@ export default function OurHistory() {
         </div>
 
         {/* Bottom colored separator line */}
-        <div className="w-full h-[3px] bg-[#16758a] mt-3 opacity-60" />
+        <div className="w-full h-[3px] bg-[#16758a] mt-3 opacity-60 mb" />
       </div>
     </>
   );

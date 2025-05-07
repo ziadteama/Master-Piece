@@ -1,7 +1,7 @@
-import person1 from "../assets/images/people/human.jpg";
-import person2 from "../assets/images/people/human.jpg";
-import person3 from "../assets/images/people/human.jpg";
-import person4 from "../assets/images/people/human.jpg";
+import person1 from "../assets/images/people/human.png";
+import person2 from "../assets/images/people/human.png";
+import person3 from "../assets/images/people/human.png";
+import person4 from "../assets/images/people/human.png";
 
 const people = [
   {
