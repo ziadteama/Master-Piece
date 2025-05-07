@@ -47,13 +47,24 @@ export default function OurHistory() {
             reliability...
           </p>
 
-          <div
-            className="border-l-4 border-[#16758a] pl-6 text-xl md:text-2xl font-semibold text-[#1F2937] italic mb-16"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            “We build with purpose, not just concrete...”
-            <div className="mt-4 not-italic font-normal text-base text-[#6B7280]">
+          <div className="border-l-4 border-[#16758a] pl-6 mb-16">
+            <div className="overflow-hidden">
+              <div
+                className="translate-x-[-100%] opacity-0 animate-slide-in-from-line text-xl md:text-2xl font-semibold text-[#1F2937] italic"
+                style={{
+                  animationDelay: "0.3s",
+                  animationDuration: "0.8s",
+                  animationFillMode: "forwards",
+                }}
+              >
+                “We build with purpose, not just concrete...”
+              </div>
+            </div>
+            <div
+              className="mt-4 not-italic font-normal text-base text-[#6B7280]"
+              data-aos="fade-right"
+              data-aos-delay="200"
+            >
               — Eng. Mostafa Mahmoud, Chairman of the Board
             </div>
           </div>
@@ -62,7 +73,7 @@ export default function OurHistory() {
             ref={ref}
             className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center mb-20"
             data-aos="fade-up"
-            data-aos-delay="400"
+            data-aos-delay="200"
           >
             <div>
               <p className="text-3xl font-bold text-[#16758a]">

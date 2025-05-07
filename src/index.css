@@ -1,4 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-    
+@keyframes slide-in-from-line {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slide-in-from-line {
+    animation-name: slide-in-from-line;
+  }
+  
