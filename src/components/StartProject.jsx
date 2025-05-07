@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+
 import IdentityButton from "../components/IdentityButton";
 import startBg from "../assets/images/start-bg.png"; // Replace with actual dark GM-style image
 
@@ -28,7 +30,7 @@ const StartProject = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <IdentityButton text="Get in Touch" href="/contact" />
+          <IdentityButton as={Link} to="/contact" text="Get in Touch" />
         </motion.div>
       </div>
     </section>
@@ -36,4 +38,3 @@ const StartProject = () => {
 };
 
 export default StartProject;
-  

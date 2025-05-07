@@ -1,6 +1,7 @@
 import React from "react";
-import LogoSVG from "./LogoSVG"; // your inline SVG logo component
+import LogoSVG from "./LogoSVG";
 import AnimatedButton from "./AnimatedButton";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -19,32 +20,47 @@ const Footer = () => {
 
           {/* Group 1 */}
           <div className="space-y-2 uppercase font-semibold text-white tracking-wide">
-            <a href="/" className="block hover:opacity-80">Home</a>
-            <a href="/projects" className="block hover:opacity-80">Projects</a>
-            <a href="/services" className="block hover:opacity-80">Services</a>
+            <Link to="/" className="block hover:opacity-80">
+              Home
+            </Link>
+            <Link to="/projects" className="block hover:opacity-80">
+              Projects
+            </Link>
+            <Link to="/services" className="block hover:opacity-80">
+              Services
+            </Link>
           </div>
 
           <div className="border-l border-[#26414b] self-stretch" />
 
           {/* Group 2 */}
           <div className="space-y-2 uppercase font-semibold text-white tracking-wide">
-            <a href="/about" className="block hover:opacity-80">About</a>
-            <a href="/contact" className="block hover:opacity-80">Contact</a>
+            <Link to="/about" className="block hover:opacity-80">
+              About
+            </Link>
+            <Link to="/contact" className="block hover:opacity-80">
+              Contact
+            </Link>
           </div>
 
           <div className="border-l border-[#26414b] self-stretch" />
 
           {/* Group 3 */}
           <div className="space-y-2 uppercase font-semibold text-white tracking-wide">
-            <a href="/terms" className="block hover:opacity-80">Terms</a>
-            <a href="/privacy" className="block hover:opacity-80">Privacy</a>
+            <Link to="/terms" className="block hover:opacity-80">
+              Terms
+            </Link>
+            <Link to="/privacy" className="block hover:opacity-80">
+              Privacy
+            </Link>
           </div>
         </div>
 
         {/* CTA Button */}
         <div className="shrink-0 pt-2">
           <AnimatedButton
-            href="/contact"
+            as={Link}
+            to="/contact"
             className="text-base px-8 py-4 tracking-wide md:text-md md:px-10 md:py-5"
           >
             Start a Project
@@ -61,8 +77,9 @@ const Footer = () => {
 
         {/* CTA Button */}
         <AnimatedButton
-          href="/contact"
-          className="text-base px-8 py-1 tracking-wider"
+          as={Link}
+          to="/contact"
+          className="text-base px-8 py-4 tracking-wide md:text-md md:px-10 md:py-5"
         >
           Start a Project
         </AnimatedButton>
