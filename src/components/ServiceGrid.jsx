@@ -42,6 +42,7 @@ export default function ServicesSection() {
         {services.map((service, idx) => (
           <ServiceSplitCard
             key={idx}
+            index={idx}
             title={service.title}
             imageUrl={service.image}
             description={service.description}
